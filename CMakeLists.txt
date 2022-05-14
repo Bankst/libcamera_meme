@@ -15,5 +15,18 @@ find_package(OpenCV REQUIRED)
 pkg_check_modules(LIBDRM REQUIRED libdrm)
 pkg_check_modules(LIBCAMERA REQUIRED libcamera)
 
+option(MAKE_SHARED "Build shared library (default on, off builds static)" ON)
+option(BUILD_EXAMPLE "Build simple example (default on)" ON)
+option(BUILD_EXAMPLE_GUI "Build ImGui example (default off)" OFF)
+
 add_subdirectory(driver)
-add_subdirectory(example)
+
+if (BUILD_EXAMPLE)
+	message("Building simple example")
+	add_subdirectory(example/simple)
+endif()
+
+if (BUILD_EXAMPLE_GUI)
+	message("Building ImGui example")
+	add_subdirectory(example/gui)
+endif()

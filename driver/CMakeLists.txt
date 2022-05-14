@@ -1,11 +1,16 @@
 cmake_minimum_required(VERSION 3.16)
 project(libcamera-gl-driver-lib)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 set(LIB_SRC
 	src/camera_grabber.cpp
 	src/dma_buf_alloc.cpp
 	src/gl_hsv_thresholder.cpp
 	src/libcamera_opengl_utility.cpp
+	src/camera_runner.cpp
 )
 
 set(LIB_HDR
@@ -14,6 +19,7 @@ set(LIB_HDR
 	inc/gl_hsv_thresholder.h
 	inc/libcamera_opengl_utility.h
 	inc/concurrent_blocking_queue.h
+	inc/camera_runner.h
 )
 
 add_library(${PROJECT_NAME} SHARED

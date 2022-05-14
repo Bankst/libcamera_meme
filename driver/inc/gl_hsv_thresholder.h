@@ -10,6 +10,8 @@
 #include <unordered_map>
 #include <vector>
 
+#include <xf86drm.h>
+#include <xf86drmMode.h>
 #include <GLES2/gl2.h>
 #include <EGL/egl.h>
 
@@ -43,6 +45,12 @@ private:
 
     GLuint m_quad_vbo;
     GLuint m_program;
+
+    int device;
+    drmModeModeInfo mode;
+    struct gbm_device *gbmDevice;
+    struct gbm_surface *gbmSurface;
+    drmModeCrtc *crtc;
 };
 
 #endif //LIBCAMERA_MEME_GL_HSV_THRESHOLDER_H
